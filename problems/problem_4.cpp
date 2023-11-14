@@ -4,23 +4,16 @@
 std::string problemSolution4(const std::string &macAddress) {
     // write your code here
     std::string type;
-    if (macAddress == "FF:FF:FF:FF:FF:FF") {
-        type = "Broadcast";
+    std::stringstream s(macAddress);
+    std::string firstOctet;
+    std::getline(s, firstOctet, ':');
+    int firstDecimal = std::stoi(firstOctet, 0, 16);
+    if (firstDecimal % 2 == 0) {
+        type="Unicast";
+    } else if (firstDecimal == 255) {
+        type="Broadcast";
     } else {
-        char first = macAddress[0];
-        int first_hex;
-        if (first >= '0' && first <= '9') {
-            first_hex = first - '0';
-        } else if (first >= 'A' && first <= 'F') {
-            first_hex = first - 'A' + 10;
-        } else if (first >= 'a' && first <= 'f') {
-            first_hex = first - 'a' + 10;
-        }
-        if (0 == first_hex % 2) {
-            type = "Unicast";
-        } else {
-            type = "Multicast";
-        }
+        type="Multicast";
     }
     return type;
 }
