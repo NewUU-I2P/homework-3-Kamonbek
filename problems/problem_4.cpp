@@ -22,6 +22,7 @@ std::string problemSolution4(const std::string &macAddress) {
             type = "Multicast";
         }
     }
+    return type;
 }
     // make use of control flow statements
     // return result;
