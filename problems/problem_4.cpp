@@ -5,7 +5,7 @@ std::string problemSolution4(const std::string &macAddress) {
     // write your code here
     std::string type;
     if (macAddress == "FF:FF:FF:FF:FF:FF") {
-        type = "broadcast";
+        type = "Broadcast";
     } else {
         char first = macAddress[0];
         int first_hex;
@@ -24,6 +24,4 @@ std::string problemSolution4(const std::string &macAddress) {
     }
     return type;
 }
-    // make use of control flow statements
-    // return result;
 
